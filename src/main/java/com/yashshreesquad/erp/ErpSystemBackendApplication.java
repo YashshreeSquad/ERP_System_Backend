@@ -8,6 +8,7 @@ public class ErpSystemBackendApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ErpSystemBackendApplication.class, args);
+		System.out.println("Hello from Pruthvi..!");
 	}
 
 }
