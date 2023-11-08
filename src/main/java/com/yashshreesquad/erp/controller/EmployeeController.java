@@ -31,4 +31,22 @@ public class EmployeeController {
 		return Optional.of(employeeRepository.save(employee));
 	}
 
+	@PatchMapping("/employees/{empId}")
+	public Optional<Employee> updateEmployeeDetails(@RequestBody Employee employee, @PathVariable Long empId){
+		Optional<Employee> employeeData = employeeRepository.findById(empId);
+		employeeData.ifPresent( e1 ->{
+			if (employee.getFirstName() != null) {
+				e1.setFirstName(employee.getFirstName());
+			}
+			if (employee.getLastName() != null) {
+				e1.setLastName(employee.getLastName());
+			}
+			if (employee.getEmailID() != null) {
+				e1.setEmailID(employee.getEmailID());
+			}
+			employeeRepository.save(e1);
+		});
+		return getEmployeeWithID(empId);
+	}
+
 }
