@@ -3,6 +3,7 @@ package com.yashshreesquad.erp.controller;
 import java.util.List;
 import java.util.Optional;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,12 +28,12 @@ public class EmployeeController {
 	}
 
 	@PostMapping("/employees")
-	public Optional<Employee> saveEmployeeDetails(@RequestBody Employee employee){
+	public Optional<Employee> saveEmployeeDetails(@Valid @RequestBody Employee employee){
 		return Optional.of(employeeRepository.save(employee));
 	}
 
 	@PatchMapping("/employees/{empId}")
-	public Optional<Employee> updateEmployeeDetails(@RequestBody Employee employee, @PathVariable Long empId){
+	public Optional<Employee> updateEmployeeDetails(@Valid @RequestBody Employee employee, @PathVariable Long empId){
 		Optional<Employee> employeeData = employeeRepository.findById(empId);
 		employeeData.ifPresent( e1 ->{
 			if (employee.getFirstName() != null) {
