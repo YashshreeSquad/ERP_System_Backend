@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.yashshreesquad.erp.model.Employee;
@@ -48,6 +50,14 @@ public class EmployeeController {
 			employeeRepository.save(e1);
 		});
 		return getEmployeeWithID(empId);
+	}
+
+	@DeleteMapping("/dismiss/{empId}")
+	public ResponseEntity<Optional<Employee>> dismissEmployee(@PathVariable Long empId){
+		Optional<Employee> employeeData = employeeRepository.findById(empId);
+		ResponseEntity<Optional<Employee>> responseEntity = new ResponseEntity<>(employeeData, HttpStatus.OK );
+		employeeRepository.deleteById(empId);
+		return responseEntity;
 	}
 
 }
