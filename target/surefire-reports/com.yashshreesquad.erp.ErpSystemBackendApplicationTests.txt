@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.yashshreesquad.erp.ErpSystemBackendApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 32.492 s - in com.yashshreesquad.erp.ErpSystemBackendApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 44.912 s - in com.yashshreesquad.erp.ErpSystemBackendApplicationTests
